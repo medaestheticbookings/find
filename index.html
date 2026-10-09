@@ -469,13 +469,11 @@ function setLang(l){
   document.getElementById('btn-en').classList.toggle('on', l === 'en');
   try{ localStorage.setItem('mab_lang', l); }catch(e){}
 }
+/* Greek is always the default. English only if the visitor asked for it
+   on a previous visit — never guessed from the browser locale. */
 (function(){
   var saved = null;
   try{ saved = localStorage.getItem('mab_lang'); }catch(e){}
-  if(!saved){
-    var nav = (navigator.language || 'el').toLowerCase();
-    saved = nav.indexOf('el') === 0 ? 'el' : 'en';
-  }
   if(saved === 'en') setLang('en');
 })();
 
