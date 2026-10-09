@@ -5,6 +5,7 @@ import io, os, json, sys
 OUT = sys.argv[1]            # repo root
 BASE = 'https://medaestheticbookings.github.io/find/'
 BLOG = BASE + 'blog/'
+FAQ = BASE + 'faq/'
 
 SHELL_CSS = u"""
   :root{
@@ -75,6 +76,8 @@ def nav(prefix):
             u'  <a href="' + prefix + u'index.html"><img src="' + prefix + u'img/logo.png" alt="Med Aesthetic Bookings" class="logo"></a>\n'
             u'  <div class="nav-right">\n'
             u'    <a href="https://www.instagram.com/medaestheticbookings/" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">' + LOGO_IG + u'</a>\n'
+            u'    <a href="' + prefix + u'blog/" class="nav-blog">Blog</a>\n'
+            u'    <a href="' + prefix + u'faq/" class="nav-blog">Συχνές ερωτήσεις</a>\n'
             u'    <a href="' + prefix + u'index.html#form" class="nav-cta">Βρες κλινική</a>\n'
             u'  </div>\n</div></nav>')
 
@@ -85,7 +88,8 @@ def footer(prefix):
             u'  <div><a href="mailto:medaestheticbooking@outlook.com">medaestheticbooking@outlook.com</a></div>\n'
             u'  <div style="margin-top:10px"><a href="https://www.instagram.com/medaestheticbookings/" target="_blank" rel="noopener">@medaestheticbookings</a>'
             u' · <a href="' + prefix + u'privacy.html">Δήλωση απορρήτου</a>'
-            u' · <a href="' + prefix + u'blog/">Blog</a></div>\n'
+            u' · <a href="' + prefix + u'blog/">Blog</a>'
+            u' · <a href="' + prefix + u'faq/">Συχνές ερωτήσεις</a></div>\n'
             u'  <div class="fine">Η Med Aesthetic Bookings είναι υπηρεσία παραπομπής. Δεν είμαστε κλινική και δεν παρέχουμε ιατρικές συμβουλές. Κάθε θεραπεία εκτελείται από την αδειοδοτημένη κλινική που επιλέγεις.</div>\n'
             u'  <div class="fine">© 2026 Med Aesthetic Bookings</div>\n'
             u'</div></footer>')
@@ -389,8 +393,17 @@ def head(title, desc, canon, img, extra_ld=u''):
             u'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
             u'<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">\n'
             + extra_ld +
-            u'<style>' + SHELL_CSS + ART_CSS + u'</style>\n</head>\n<body>\n')
+            u'<style>' + SHELL_CSS + ART_CSS + FAQ_CSS + u'</style>\n</head>\n<body>\n')
 
+
+FAQ_CSS = u"""
+  .faq-group{margin-bottom:36px;}
+  .faq-group h2{font-size:21px;margin-bottom:4px;padding-bottom:9px;
+    border-bottom:2px solid var(--brass);display:inline-block;}
+  .faq-item{border-bottom:1px solid var(--line);padding:20px 0;}
+  .faq-item h3{font-size:17.5px;margin-bottom:9px;}
+  .faq-item p{color:var(--ink-soft);font-size:15.5px;line-height:1.65;}
+"""
 
 ART_CSS = u"""
   article{padding:10px 0 0;}
@@ -529,11 +542,103 @@ def render_index():
             + footer('../') + u'\n</body>\n</html>\n')
 
 
+# ---------------------------------------------------------------- FAQ page --
+# Constraints baked in deliberately: coverage is Athens / Piraeus / Argyroupoli
+# only, no euro figures anywhere (we do not set clinic prices), and the answers
+# keep repeating that this is a referral service, not a clinic.
+FAQ_GROUPS = [
+    (u'Η υπηρεσία', [
+        (u'Πόσο μου κοστίζει;',
+         u'Τίποτα. Η υπηρεσία είναι δωρεάν για σένα. Πληρωνόμαστε από τις κλινικές με τις οποίες συνεργαζόμαστε, και η τιμή που πληρώνεις στην κλινική είναι η ίδια σαν να την είχες βρει μόνος σου.'),
+        (u'Πώς βγάζετε χρήματα;',
+         u'Οι συνεργαζόμενες κλινικές μάς πληρώνουν για τις παραπομπές. Αυτό σημαίνει ότι έχουμε λόγο να σου στείλουμε κλινική που θα σε κρατήσει ευχαριστημένο, όχι απλώς την πρώτη διαθέσιμη.'),
+        (u'Δεσμεύομαι σε κάτι;',
+         u'Όχι. Παίρνεις τις επιλογές σου και αποφασίζεις εσύ. Μπορείς να μη συνεχίσεις καθόλου ή να μας ζητήσεις διαφορετικές προτάσεις, χωρίς καμία χρέωση.'),
+        (u'Σε πόση ώρα θα έχω απάντηση;',
+         u'Μέσα σε 24 ώρες τις εργάσιμες ημέρες. Αν αφήσεις τηλέφωνο, μπορεί να σε καλέσουμε πρώτα με δυο ερωτήσεις, ώστε οι προτάσεις να είναι πιο στοχευμένες.'),
+        (u'Είστε κλινική;',
+         u'Όχι. Είμαστε υπηρεσία παραπομπής. Δεν εκτελούμε θεραπείες, δεν κάνουμε διάγνωση και δεν δίνουμε ιατρικές συμβουλές. Κάθε θεραπεία γίνεται από την αδειοδοτημένη κλινική που θα επιλέξεις.'),
+    ]),
+    (u'Οι κλινικές', [
+        (u'Πώς επιλέγετε τις κλινικές;',
+         u'Με αυτή τη σειρά: άδεια λειτουργίας, ο εξοπλισμός που απαιτεί η συγκεκριμένη θεραπεία, τα προσόντα του προσωπικού, οι αξιολογήσεις των πελατών και τέλος η απόσταση από εσένα. Μια κλινική που κόβεται στα τρία πρώτα δεν φτάνει στη λίστα σου όσο κοντά κι αν είναι.'),
+        (u'Σε ποιες περιοχές καλύπτετε;',
+         u'Για την ώρα Αθήνα, Πειραιάς και Αργυρούπολη, και οι γύρω περιοχές. Προσθέτουμε κι άλλες καθώς συνεργαζόμαστε με νέες κλινικές — αν είσαι αλλού, στείλε τη φόρμα και θα σου πούμε ειλικρινά αν μπορούμε ήδη να βοηθήσουμε.'),
+        (u'Μπορώ να ζητήσω άλλη κλινική;',
+         u'Ναι. Πες μας τι δεν σου ταίριαξε — ωράριο, τοποθεσία, τρόπος επικοινωνίας — και στέλνουμε άλλες επιλογές.'),
+        (u'Τι γίνεται αν δεν μείνω ευχαριστημένος;',
+         u'Πες μας το. Το κρατάμε στην αξιολόγηση της κλινικής και σου προτείνουμε άλλη. Για ζήτημα που αφορά την ίδια τη θεραπεία, η κλινική είναι ο πάροχος και απευθύνεσαι πρώτα σε εκείνη.'),
+    ]),
+    (u'Οι θεραπείες', [
+        (u'Ποιες θεραπείες καλύπτετε;',
+         u'Λεύκανση δοντιών, αποτρίχωση με laser, facial 8 βημάτων, PRX-T33, BioRePeel και θεραπεία τριχόπτωσης. Αν ψάχνεις κάτι άλλο, ρώτησέ μας — αν δεν το καλύπτουμε, θα στο πούμε ευθέως.'),
+        (u'Πόσο κοστίζει η θεραπεία;',
+         u'Δεν ορίζουμε εμείς τις τιμές των κλινικών και δεν δημοσιεύουμε ποσά εδώ, γιατί διαφέρουν πραγματικά ανά κλινική και ανά περιοχή σώματος. Σου στέλνουμε τις τρέχουσες τιμές των κλινικών της περιοχής σου μαζί με τις προτάσεις.'),
+        (u'Ποια θεραπεία χρειάζομαι;',
+         u'Αυτό το κρίνει η κλινική αφού δει το δέρμα ή τα δόντια σου. Εμείς σε συνδέουμε με κάποια που κάνει σωστή αξιολόγηση πριν σου πουλήσει πακέτο. Στο blog εξηγούμε τι κάνει η καθεμία ώστε να πας με τις σωστές ερωτήσεις.'),
+        (u'Είναι ασφαλείς;',
+         u'Όταν γίνονται σε αδειοδοτημένη κλινική, από εκπαιδευμένο προσωπικό, μετά από αξιολόγηση. Για αυτό η άδεια και ο εξοπλισμός είναι τα δύο πρώτα κριτήριά μας. Δεν είμαστε γιατροί και τίποτα εδώ δεν είναι ιατρική συμβουλή.'),
+    ]),
+    (u'Τα στοιχεία σου', [
+        (u'Τι γίνεται με τα στοιχεία μου;',
+         u'Τα χρησιμοποιούμε για να βρούμε την κλινική σου και για να επικοινωνήσουμε μαζί σου για αυτό, και τα δίνουμε μόνο στις κλινικές που σου προτείνουμε πραγματικά. Δεν τα πουλάμε ποτέ σε τρίτους.'),
+        (u'Πώς ζητάω διαγραφή;',
+         u'Στείλε μήνυμα στο medaestheticbooking@outlook.com και τα διαγράφουμε. Δεν χρειάζεται να δικαιολογήσεις τον λόγο.'),
+    ]),
+]
+
+
+def render_faq():
+    title = u'Συχνές ερωτήσεις | Med Aesthetic Bookings'
+    desc = (u'Πόσο κοστίζει, πώς επιλέγουμε τις κλινικές, σε ποιες περιοχές καλύπτουμε '
+            u'και τι γίνεται με τα στοιχεία σου.')
+    flat = [(q, a) for _g, qs in FAQ_GROUPS for q, a in qs]
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in flat]},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1,
+             "name": u"Αρχική", "item": BASE},
+            {"@type": "ListItem", "position": 2,
+             "name": u"Συχνές ερωτήσεις", "item": FAQ}]}]}
+    extra = (u'<script type="application/ld+json">'
+             + json.dumps(ld, ensure_ascii=False) + u'</script>\n')
+
+    body = u''
+    for group, qs in FAQ_GROUPS:
+        body += u'  <section class="faq-group">\n    <h2>' + group + u'</h2>\n'
+        for q, a in qs:
+            body += (u'    <div class="faq-item">\n'
+                     u'      <h3>' + q + u'</h3>\n'
+                     u'      <p>' + a + u'</p>\n'
+                     u'    </div>\n')
+        body += u'  </section>\n'
+
+    return (head(title, desc, FAQ, BASE + 'img/hero.jpg', extra)
+            + nav('../')
+            + u'\n<div class="wrap">\n'
+            + u'  <div class="crumb"><a href="../index.html">Αρχική</a> › <a href="./">Συχνές ερωτήσεις</a></div>\n'
+            + u'  <div class="blog-head">\n'
+            + u'    <h1>Συχνές ερωτήσεις</h1>\n'
+            + u'    <p>' + desc + u'</p>\n'
+            + u'  </div>\n'
+            + body
+            + CTA
+            + u'</div>\n'
+            + footer('../') + u'\n</body>\n</html>\n')
+
+
 d = os.path.join(OUT, 'blog')
 if not os.path.isdir(d):
     os.makedirs(d)
 
 io.open(os.path.join(d, 'index.html'), 'w', encoding='utf-8', newline='').write(render_index())
+fd = os.path.join(OUT, 'faq')
+if not os.path.isdir(fd):
+    os.makedirs(fd)
+io.open(os.path.join(fd, 'index.html'), 'w', encoding='utf-8', newline='').write(render_faq())
+
 for post in POSTS:
     io.open(os.path.join(d, post['slug'] + '.html'), 'w', encoding='utf-8', newline='').write(render_article(post))
 
@@ -541,7 +646,7 @@ for post in POSTS:
 io.open(os.path.join(OUT, 'robots.txt'), 'w', encoding='utf-8', newline='').write(
     u'User-agent: *\nAllow: /\n\nSitemap: ' + BASE + u'sitemap.xml\n')
 
-urls = [(BASE, '1.0'), (BLOG, '0.8')] + [(BLOG + p['slug'] + '.html', '0.7') for p in POSTS]
+urls = [(BASE, '1.0'), (FAQ, '0.9'), (BLOG, '0.8')] + [(BLOG + p['slug'] + '.html', '0.7') for p in POSTS]
 sm = u'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 for u_, pr in urls:
     sm += u'  <url><loc>%s</loc><lastmod>2026-10-09</lastmod><priority>%s</priority></url>\n' % (u_, pr)
