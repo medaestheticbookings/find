@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Βρες την καλύτερη κλινική αισθητικής κοντά σου | Med Aesthetic Bookings</title>
-<meta name="description" content="Πες μας τι θεραπεία θέλεις και σε ποια πόλη είσαι. Βρίσκουμε για σένα τις καλύτερες αξιολογημένες κλινικές στην περιοχή σου — αποτρίχωση laser, PRX-T33, BioRePeel, λεύκανση δοντιών. Δωρεάν υπηρεσία, σε όλη την Ελλάδα.">
+<meta name="description" content="Πες μας τι θεραπεία θέλεις και σε ποια πόλη είσαι. Βρίσκουμε για σένα τις καλύτερες αξιολογημένες κλινικές στην περιοχή σου — λεύκανση δοντιών, αποτρίχωση laser, facial 8 βημάτων, PRX-T33, BioRePeel. Δωρεάν υπηρεσία, σε όλη την Ελλάδα.">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Βρες την καλύτερη κλινική αισθητικής κοντά σου">
@@ -133,6 +133,12 @@
   .treat ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:auto;}
   .treat li{font-size:14.5px;color:var(--ink);display:flex;gap:9px;align-items:flex-start;}
   .treat li::before{content:'✓';color:var(--brass);font-weight:800;flex-shrink:0;}
+  .treat.wide{grid-column:1/-1;}
+  @media (min-width:761px){
+    .treat.wide{flex-direction:row;}
+    .treat.wide .shot{width:44%;aspect-ratio:auto;min-height:320px;}
+    .treat.wide .body{width:56%;justify-content:center;padding:34px 36px;}
+  }
 
   /* ---------- why ---------- */
   .why{background:var(--cream-alt);}
@@ -262,6 +268,19 @@
       <p data-en="Every clinic we recommend is licensed and uses certified equipment and certified staff.">Κάθε κλινική που προτείνουμε είναι αδειοδοτημένη και χρησιμοποιεί πιστοποιημένο εξοπλισμό και πιστοποιημένο προσωπικό.</p>
     </div>
     <div class="treat-grid">
+      <div class="treat">
+        <div class="shot"><img src="img/teeth.jpg" alt="Λαμπερό χαμόγελο μετά από επαγγελματική λεύκανση δοντιών" loading="lazy" width="900" height="600"></div>
+        <div class="body">
+          <div class="alt">Teeth Whitening</div>
+          <h3 data-en="Teeth Whitening">Λεύκανση Δοντιών</h3>
+          <p data-en="Professional in-chair whitening at a dental practice, in a single session. A visible difference without the sensitivity that comes with over-the-counter kits.">Επαγγελματική λεύκανση σε οδοντιατρείο, σε μία συνεδρία. Ορατή διαφορά χωρίς την ευαισθησία που αφήνουν τα κιτ του εμπορίου.</p>
+          <ul>
+            <li data-en="Performed by a licensed dentist">Από αδειοδοτημένο οδοντίατρο</li>
+            <li data-en="One session, immediate result">Μία συνεδρία, άμεσο αποτέλεσμα</li>
+            <li data-en="Home maintenance kit included">Με κιτ συντήρησης στο σπίτι</li>
+          </ul>
+        </div>
+      </div>
 
       <div class="treat">
         <div class="shot"><img src="img/laser.jpg" alt="Αποτρίχωση με laser σε κλινική αισθητικής" loading="lazy" width="760" height="950"></div>
@@ -273,6 +292,20 @@
             <li data-en="Face, body, full-body packages">Πρόσωπο, σώμα, πακέτα ολικής</li>
             <li data-en="Suitable for most skin types">Κατάλληλο για τους περισσότερους τύπους δέρματος</li>
             <li data-en="Free consultation and test patch">Δωρεάν αξιολόγηση και δοκιμαστική βολή</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="treat">
+        <div class="shot"><img src="img/facial.jpg" alt="Βαθύς καθαρισμός προσώπου οκτώ βημάτων σε κλινική" loading="lazy" width="860" height="671"></div>
+        <div class="body">
+          <div class="alt" data-en="Deep cleansing facial">Βαθύς καθαρισμός προσώπου</div>
+          <h3 data-en="8-Step Facial">Facial 8 Βημάτων</h3>
+          <p data-en="A complete medical-grade facial in eight stages — from skin diagnosis and deep cleansing through extraction, exfoliation and mask to hydration and protection. Clean, smooth, glowing skin in a single session.">Ολοκληρωμένος ιατρικός καθαρισμός προσώπου σε οκτώ στάδια — από τη διάγνωση του δέρματος και τον βαθύ καθαρισμό μέχρι την εξαγωγή, την απολέπιση, τη μάσκα και την τελική ενυδάτωση και προστασία. Καθαρό, λείο και λαμπερό δέρμα σε μία συνεδρία.</p>
+          <ul>
+            <li data-en="Eight stages in one session">Οκτώ στάδια σε μία συνεδρία</li>
+            <li data-en="Deep pore and blackhead extraction">Βαθύς καθαρισμός πόρων και μαύρων στιγμάτων</li>
+            <li data-en="No downtime, suits every skin type">Χωρίς downtime, για κάθε τύπο δέρματος</li>
           </ul>
         </div>
       </div>
@@ -291,7 +324,7 @@
         </div>
       </div>
 
-      <div class="treat">
+      <div class="treat wide">
         <div class="shot"><img src="img/lift.jpg" alt="Θεραπεία peeling προσώπου BioRePeel" loading="lazy" width="760" height="950"></div>
         <div class="body">
           <div class="alt" data-en="Next-generation peel">Peeling νέας γενιάς</div>
@@ -304,21 +337,6 @@
           </ul>
         </div>
       </div>
-
-      <div class="treat">
-        <div class="shot"><img src="img/teeth.jpg" alt="Λαμπερό χαμόγελο μετά από επαγγελματική λεύκανση δοντιών" loading="lazy" width="900" height="600"></div>
-        <div class="body">
-          <div class="alt">Teeth Whitening</div>
-          <h3 data-en="Teeth Whitening">Λεύκανση Δοντιών</h3>
-          <p data-en="Professional in-chair whitening at a dental practice, in a single session. A visible difference without the sensitivity that comes with over-the-counter kits.">Επαγγελματική λεύκανση σε οδοντιατρείο, σε μία συνεδρία. Ορατή διαφορά χωρίς την ευαισθησία που αφήνουν τα κιτ του εμπορίου.</p>
-          <ul>
-            <li data-en="Performed by a licensed dentist">Από αδειοδοτημένο οδοντίατρο</li>
-            <li data-en="One session, immediate result">Μία συνεδρία, άμεσο αποτέλεσμα</li>
-            <li data-en="Home maintenance kit included">Με κιτ συντήρησης στο σπίτι</li>
-          </ul>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -389,10 +407,11 @@
           <label for="f-treat" data-en="Which treatment? <span class='req'>*</span>">Ποια θεραπεία; <span class="req">*</span></label>
           <select id="f-treat" name="treatment" required>
             <option value="" data-en="— Choose —">— Διάλεξε —</option>
+            <option value="Teeth Whitening" data-en="Teeth Whitening">Λεύκανση Δοντιών</option>
             <option value="Laser Hair Removal" data-en="Laser Hair Removal">Αποτρίχωση με Laser</option>
+            <option value="8-Step Facial" data-en="8-Step Facial">Facial 8 Βημάτων</option>
             <option value="PRX-T33">PRX-T33</option>
             <option value="BioRePeel">BioRePeel</option>
-            <option value="Teeth Whitening" data-en="Teeth Whitening">Λεύκανση Δοντιών</option>
             <option value="Not sure yet" data-en="Not sure yet — advise me">Δεν είμαι σίγουρος/η — συμβουλέψτε με</option>
           </select>
         </div>
