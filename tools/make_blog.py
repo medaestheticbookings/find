@@ -389,6 +389,8 @@ def head(title, desc, canon, img, extra_ld=u''):
             u'<meta property="og:image" content="' + img + u'">\n'
             u'<meta name="twitter:card" content="summary_large_image">\n'
             u'<link rel="icon" href="../img/favicon.ico" sizes="any">\n'
+            u'<link rel="icon" type="image/png" sizes="32x32" href="../img/icon-32.png">\n'
+            u'<link rel="apple-touch-icon" href="../img/apple-icon.png">\n'
             u'<link rel="preconnect" href="https://fonts.googleapis.com">\n'
             u'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
             u'<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">\n'
