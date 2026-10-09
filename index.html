@@ -219,6 +219,12 @@
     border-radius:12px;border:1px solid rgba(255,255,255,.45);
     transition:background .2s ease, transform .2s ease;}
   .btn-outline:hover{background:rgba(255,255,255,.18);transform:translateY(-2px);}
+  /* secondary button for the cream sections; btn-outline is hero-only */
+  .btn-line{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    background:transparent;color:var(--teal);font-weight:700;font-size:15.5px;padding:15px 30px;
+    border-radius:12px;border:1.5px solid var(--teal);text-decoration:none;
+    transition:background .2s ease, transform .2s ease;}
+  .btn-line:hover{background:rgba(15,74,94,.07);transform:translateY(-2px);}
   .ticks{display:flex;gap:20px;flex-wrap:wrap;font-size:14px;color:rgba(255,255,255,.85);font-weight:500;}
   @media (max-width:760px){.ticks{justify-content:center;}}
   .ticks span{display:inline-flex;align-items:center;gap:7px;}
@@ -603,7 +609,7 @@
       <p data-en="Right now Athens, Piraeus and Argyroupoli, and the areas around them. We are adding more as we sign up clinics — if you are somewhere else, send the form anyway and we will tell you honestly whether we can help yet.">Για την ώρα Αθήνα, Πειραιάς και Αργυρούπολη, και οι γύρω περιοχές. Προσθέτουμε κι άλλες καθώς συνεργαζόμαστε με νέες κλινικές — αν είσαι αλλού, στείλε τη φόρμα και θα σου πούμε ειλικρινά αν μπορούμε ήδη να βοηθήσουμε.</p>
     </div>
     <p style="margin-top:26px;text-align:center">
-      <a href="faq/" class="btn btn-outline" data-en="All questions">Όλες οι ερωτήσεις</a>
+      <a href="faq/" class="btn-line" data-en="All questions">Όλες οι ερωτήσεις</a>
     </p>
   </div>
 </section>
