@@ -367,18 +367,18 @@
     <div class="steps">
       <div class="step">
         <div class="num">01</div>
-        <h3 data-en="You fill in the form">Συμπληρώνεις τη φόρμα</h3>
-        <p data-en="Your name, email and town, and which treatment you are interested in. Nothing more.">Όνομα, email και πόλη, και ποια θεραπεία σε ενδιαφέρει. Τίποτα παραπάνω.</p>
+        <h3 data-en="You leave your details">Μας αφήνεις τα στοιχεία σου</h3>
+        <p data-en="Your full name, email, phone and town, and which treatment you are interested in. Nothing more.">Ονοματεπώνυμο, email, τηλέφωνο και πόλη, και ποια θεραπεία σε ενδιαφέρει. Τίποτα παραπάνω.</p>
       </div>
       <div class="step">
         <div class="num">02</div>
         <h3 data-en="We search for you">Ψάχνουμε για σένα</h3>
-        <p data-en="We find the licensed clinics in your area that actually perform that treatment, and we check their reviews, equipment and availability.">Βρίσκουμε τις αδειοδοτημένες κλινικές της περιοχής σου που όντως κάνουν αυτή τη θεραπεία, και ελέγχουμε αξιολογήσεις, μηχανήματα και διαθεσιμότητα.</p>
+        <p data-en="We find the licensed clinics in your area that actually perform that treatment, and we check their reviews, their equipment and their staff.">Βρίσκουμε τις αδειοδοτημένες κλινικές της περιοχής σου που όντως κάνουν αυτή τη θεραπεία, και ελέγχουμε αξιολογήσεις, εξοπλισμό και προσόντα προσωπικού.</p>
       </div>
       <div class="step">
         <div class="num">03</div>
-        <h3 data-en="You book your appointment">Κλείνεις το ραντεβού σου</h3>
-        <p data-en="We send you the best options with prices and available slots. You choose. You are never under any obligation.">Σου στέλνουμε τις καλύτερες επιλογές με τιμές και διαθέσιμα ραντεβού. Διαλέγεις εσύ. Καμία δέσμευση.</p>
+        <h3 data-en="We come back to you">Επικοινωνούμε μαζί σου</h3>
+        <p data-en="Within 24 hours we send you the best options with their prices, by email or phone. You choose, and you book straight with the clinic. You are never under any obligation.">Μέσα σε 24 ώρες σου στέλνουμε τις καλύτερες επιλογές με τις τιμές τους, με email ή τηλέφωνο. Διαλέγεις εσύ και κλείνεις απευθείας με την κλινική. Καμία δέσμευση.</p>
       </div>
     </div>
   </div>
@@ -535,8 +535,8 @@
                    placeholder="π.χ. Γλυφάδα" data-en-ph="e.g. Glyfada">
           </div>
           <div class="fld">
-            <label for="f-phone" data-en="Phone (optional)">Τηλέφωνο (προαιρετικό)</label>
-            <input type="tel" id="f-phone" name="phone" autocomplete="tel">
+            <label for="f-phone" data-en="Phone">Τηλέφωνο</label>
+            <input type="tel" id="f-phone" name="phone" autocomplete="tel" required>
           </div>
         </div>
 
@@ -780,14 +780,14 @@ document.getElementById('yr').textContent = new Date().getFullYear();
       ph:'Γράψε την ερώτησή σου…',
       hello:'Γεια σου! Σε βοηθάω να βρεις την κατάλληλη κλινική κοντά σου. Τι σε ενδιαφέρει;',
       fallback:'Δεν είμαι σίγουρος γι’ αυτό — αλλά ο άνθρωπός μας θα σου απαντήσει. Συμπλήρωσε <a href="#form" data-close>τη φόρμα</a> ή γράψε μας στο <a href="mailto:medaestheticbooking@outlook.com">medaestheticbooking@outlook.com</a> ή στείλε μας DM στο <a href="https://ig.me/m/medaestheticbookings" target="_blank" rel="noopener">Instagram</a>.',
-      chips:['Τιμές','Θεραπείες','Η περιοχή μου','Πόσο γρήγορα;','Κλείσε ραντεβού'],
+      chips:['Τιμές','Θεραπείες','Η περιοχή μου','Πόσο γρήγορα;','Πώς ξεκινάω;'],
       a:{
         'τιμ':'Η υπηρεσία μας είναι <strong>εντελώς δωρεάν για σένα</strong>. Πληρωνόμαστε από τις κλινικές. Η τιμή της θεραπείας διαφέρει ανά κλινική και περιοχή — μόλις μας πεις τι ψάχνεις, σου στέλνουμε τιμές από τις καλύτερες επιλογές κοντά σου.',
         'κοστ':'Η υπηρεσία μας δεν σου κοστίζει <strong>τίποτα</strong>. Πληρωνόμαστε από τις κλινικές, και στην κλινική πληρώνεις την ίδια τιμή σαν να την είχες βρει μόνος σου.',
         'θεραπ':'Βρίσκουμε κλινικές για: <strong>λεύκανση δοντιών</strong>, <strong>αποτρίχωση με laser</strong>, <strong>facial 8 βημάτων</strong>, <strong>PRX-T33</strong>, <strong>BioRePeel</strong> και <strong>θεραπεία τριχόπτωσης</strong>. <a href="#treatments" data-close>Δες τις αναλυτικά</a>.',
         'περιοχ':'Για την ώρα καλύπτουμε <strong>Αθήνα, Πειραιάς και Αργυρούπολη</strong> και τις γύρω περιοχές. Αν είσαι αλλού, στείλε τη φόρμα και θα σου πούμε ειλικρινά αν μπορούμε ήδη να βοηθήσουμε. Γράψε την πόλη σου <a href="#form" data-close>στη φόρμα</a>.',
-        'γρήγορ':'Απαντάμε <strong>μέσα σε 24 ώρες</strong> τις εργάσιμες ημέρες, με συγκεκριμένες επιλογές, τιμές και διαθέσιμα ραντεβού.',
-        'ραντεβ':'Τέλεια. Συμπλήρωσε <a href="#form" data-close>τη φόρμα</a> με όνομα, email, πόλη και θεραπεία — και σου στέλνουμε τις καλύτερες κλινικές της περιοχής σου μέσα σε 24 ώρες. Καμία δέσμευση.',
+        'γρήγορ':'Απαντάμε <strong>μέσα σε 24 ώρες</strong> τις εργάσιμες ημέρες, με συγκεκριμένες επιλογές και τιμές. Το ραντεβού το κλείνεις εσύ με την κλινική.',
+        'ξεκιν':'Εμείς δεν κλείνουμε ραντεβού — σου βρίσκουμε την κλινική και το κλείνεις εσύ μαζί της. Αφήσε <a href="#form" data-close>στη φόρμα</a> ονοματεπώνυμο, email, τηλέφωνο, πόλη και θεραπεία, και επικοινωνούμε μέσα σε 24 ώρες. Καμία δέσμευση.',
         'κλινικ':'Ελέγχουμε με αυτή τη σειρά: <strong>άδεια λειτουργίας</strong>, <strong>εξοπλισμό</strong> για τη συγκεκριμένη θεραπεία, <strong>προσόντα προσωπικού</strong>, <strong>αξιολογήσεις</strong> και τέλος <strong>απόσταση</strong> από εσένα.',
         'δεδομέν':'Τα στοιχεία σου τα χρησιμοποιούμε μόνο για να σου βρούμε κλινική και τα δίνουμε μόνο στις κλινικές που σου προτείνουμε. Δεν τα πουλάμε ποτέ. <a href="privacy.html">Δήλωση απορρήτου</a>.',
         'ασφαλ':'Κάθε θεραπεία γίνεται από αδειοδοτημένη κλινική με πιστοποιημένο προσωπικό. Εμείς δεν είμαστε κλινική και δεν δίνουμε ιατρικές συμβουλές — η κλινική θα σε αξιολογήσει πριν από κάθε θεραπεία.',
