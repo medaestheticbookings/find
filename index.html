@@ -133,7 +133,9 @@
   .nav-cta:hover{background:var(--brass-btn-dark);transform:translateY(-1px);}
   .nav-blog{font-size:13.5px;font-weight:700;color:var(--teal);padding:8px 2px;white-space:nowrap;}
   .nav-blog:hover{color:var(--brass-ink);}
-  @media (max-width:560px){.nav-blog{display:none;}}
+  @media (max-width:620px){.nav-blog[href="blog/"]{display:none;}}
+  @media (max-width:430px){.nav-ig{display:none;}}
+  @media (max-width:360px){.nav-blog{display:none;}}
   .nav-ig{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;
     border-radius:50%;color:var(--teal);border:1px solid var(--line);background:var(--card);
     transition:color .2s ease,border-color .2s ease,transform .2s ease;}
@@ -187,7 +189,8 @@
     width:40px;height:40px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;
     justify-content:center;transition:background .2s ease;}
   .chat-in button:hover{background:var(--teal-deep);}
-  @media (max-width:430px){.nav-cta{font-size:12.5px;padding:9px 14px;}}
+  .nav-cta{white-space:nowrap;}
+  @media (max-width:430px){.nav-cta{font-size:12px;padding:9px 13px;}}
 
   /* ---------- hero ---------- */
   header.hero{position:relative;min-height:clamp(520px,78vh,720px);display:flex;align-items:center;
